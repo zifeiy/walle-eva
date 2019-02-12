@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>报表展示界面</title>
+</head>
+<body>
+<script type="text/javascript">
+    function go(url) {
+        window.open(url);
+    }
+</script>
+<div><input type="submit" value="导出" onclick="go('{{{downloadUrl}}}');"></div>
+<hr>
+<iframe src="{{{resultUrl}}}" width=800 height=550></iframe>
+<hr>
+<a href="{{{preUrl}}}">上一页</a> &nbsp; <a href="{{{nextUrl}}}">下一页</a>
+</body>
+</html>
+
+

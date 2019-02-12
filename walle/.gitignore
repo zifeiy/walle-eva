@@ -1,0 +1,4 @@
+/node_modules/
+/public/reports/*.csv
+/logs/*.log
+logs/*.log

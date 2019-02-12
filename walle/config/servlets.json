@@ -1,0 +1,6 @@
+{
+    "/result": "./servlets/result.js",
+    "/download": "./servlets/download.js",
+    "/result_redirect": "./servlets/result_redirect.js",
+    "/loading": "./servlets/loading.js"
+}

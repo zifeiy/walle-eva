@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试报表</title>
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../easyui/demo/demo.css">
+	<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+    <div align="center">
+        <form action="/result" method="get">
+            <input type="hidden" name="required_rpt_id" value="my_test_table"> 
+            <input type="hidden" name="pageIndex" value="1">
+            <table>
+                <tr>
+                    <td>姓名：</td>
+                    <td><input type="text" name="name" value="" /></td>
+                </tr>
+				<tr>
+                    <td>年龄：</td>
+                    <td><input type="text" name="age" value="" /></td>
+                </tr>
+				<tr>
+                    <td>地址：</td>
+                    <td><input type="text" name="address" value="" /></td>
+                </tr>
+            </table>
+             <br/>
+            <input type="submit" value="提交" />
+        </form>
+    </div>
+    <br /><br />
+</body>
+
+
+	<script type="text/javascript">
+		function myformatter(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			return '' + y + (m<10?('0'+m):m) + (d<10?('0'+d):d);
+		}
+		function myparser(s){
+			if (!s) return new Date();
+			var y = parseInt(s.substr(0,4));
+			var m = parseInt(s.substr(4,2));
+            switch (s.substr(4,2)) {    // 添加这段代码的原因是：老版的IE8浏览器里面的parseInt()函数有问题，不能正确解析，比如parseInt('08')会莫名其妙的解析成0，我也是醉了~
+                case '01': m = 1; break;    case '02': m = 2; break;    case '03': m = 3; break;    case '04': m = 4; break;
+                case '05': m = 5; break;    case '06': m = 6; break;    case '07': m = 7; break;    case '08': m = 8; break;
+                case '09': m = 9; break;    case '10': m =10; break;    case '11': m =11; break;    case '12': m =12; break;
+                default: break;
+            }
+			var d = parseInt(s.substr(6,2));
+            switch (s.substr(6, 2)) {
+                case '01': d = 1; break;    case '02': d = 2; break;    case '03': d = 3; break;    case '04': d = 4; break;
+                case '05': d = 5; break;    case '06': d = 6; break;    case '07': d = 7; break;    case '08': d = 8; break;   
+                case '09': d = 9; break;    case '10': d = 10; break;   case '11': d = 11; break;   case '12': d = 12; break;
+                case '13': d = 13; break;   case '14': d = 14; break;   case '15': d = 15; break;   case '16': d = 16; break;   
+                case '17': d = 17; break;   case '18': d = 18; break;   case '19': d = 19; break;   case '20': d = 20; break;
+                case '21': d = 21; break;   case '22': d = 22; break;   case '23': d = 23; break;   case '24': d = 24; break;
+                case '25': d = 25; break;   case '26': d = 26; break;   case '27': d = 27; break;   case '28': d = 28; break;
+                case '29': d = 29; break;   case '30': d = 30; break;   case '31': d = 31; break;   default: break;
+            }
+			if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+				return new Date(y,m-1,d);
+			} else {
+				return new Date();
+			}
+		}
+	</script>

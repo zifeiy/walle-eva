@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的测试报表</title>
+<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+    var url = "my_test_table/result";
+    var idx = window.location.href.indexOf("?");
+    if (idx != -1) {
+        url += window.location.href.substr(idx);
+    }
+
+    $(function() {
+        $('#grid').datagrid({
+            url: url,
+            fit: true,
+            columns: [[
+                { field: 'id', title: '编号', width: 100 },
+                { field: 'name', title: '姓名', width: 150 },
+                { field: 'age', title: '年龄', width: 100 },
+                { field: 'address', title: '地址', width: 200 }
+            ]]
+        });
+    });
+</script>
+</head>
+<body>
+<table id="grid"></table>
+</body>
+</html>
